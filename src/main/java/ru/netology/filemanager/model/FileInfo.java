@@ -6,8 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
@@ -27,7 +27,7 @@ public class FileInfo {
     @Column
     private Long size;
     @Column
-    private String key;
+    private String keyFile;
     @Column
     private LocalDate uploadDate;
 
@@ -50,8 +50,8 @@ public class FileInfo {
             return this;
         }
 
-        public Builder setKey(String key) {
-            FileInfo.this.key = key;
+        public Builder setKeyFile(String keyFile) {
+            FileInfo.this.keyFile = keyFile;
             return this;
         }
 

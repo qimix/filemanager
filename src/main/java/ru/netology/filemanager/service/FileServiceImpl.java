@@ -35,7 +35,7 @@ public class FileServiceImpl implements FileService {
         String key = generateKey(resource.getName());
         FileInfo createdFile = FileInfo.builder()
                 .setName(resource.getOriginalFilename())
-                .setKey(key)
+                .setKeyFile(key)
                 .setSize(resource.getSize())
                 .build();
         createdFile = fileDAO.create(createdFile);
