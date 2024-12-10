@@ -35,15 +35,15 @@ public class FileServiceImpl implements FileService {
     @Override
     public FileInfo upload(MultipartFile resource) throws IOException {
         LocalDate uploadDate = LocalDate.now();
-        String key = generateKey(resource.getName());
+        String keyFile = generateKey(resource.getName());
         FileInfo createdFile = FileInfo.builder()
                 .setName(resource.getOriginalFilename())
-                .setKeyFile(key)
+                .setKeyFile(keyFile)
                 .setSize(resource.getSize())
                 .setLocalDate(uploadDate)
                 .build();
         createdFile = fileDAO.create(createdFile);
-        //fileManager.upload(resource.getBytes(), key);
+        fileManager.upload(resource.getBytes(), keyFile);
         return createdFile;
     }
 
