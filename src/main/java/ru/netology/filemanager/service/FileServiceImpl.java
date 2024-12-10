@@ -13,6 +13,7 @@ import ru.netology.filemanager.util.FileManager;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -41,6 +42,11 @@ public class FileServiceImpl implements FileService {
         createdFile = fileDAO.create(createdFile);
         //fileManager.upload(resource.getBytes(), key);
         return createdFile;
+    }
+
+    @Override
+    public List<FileInfo> filelist() {
+        return fileDAO.filelist();
     }
 
     private String generateKey(String name) {
