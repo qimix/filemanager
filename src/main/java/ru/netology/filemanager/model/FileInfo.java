@@ -40,6 +40,11 @@ public class FileInfo {
         private Builder() {
         }
 
+        public Builder setId(Long id) {
+            FileInfo.this.id = id;
+            return this;
+        }
+
         public Builder setName(String name) {
             FileInfo.this.name = name;
             return this;
