@@ -12,6 +12,7 @@ import ru.netology.filemanager.model.FileInfo;
 import ru.netology.filemanager.util.FileManager;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,11 +34,13 @@ public class FileServiceImpl implements FileService {
     @Transactional(rollbackOn = {IOException.class})
     @Override
     public FileInfo upload(MultipartFile resource) throws IOException {
+        LocalDate uploadDate = LocalDate.now();
         String key = generateKey(resource.getName());
         FileInfo createdFile = FileInfo.builder()
                 .setName(resource.getOriginalFilename())
                 .setKeyFile(key)
                 .setSize(resource.getSize())
+                .setLocalDate(uploadDate)
                 .build();
         createdFile = fileDAO.create(createdFile);
         //fileManager.upload(resource.getBytes(), key);
