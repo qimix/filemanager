@@ -7,6 +7,7 @@
     <persistence-unit name="filemanager">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>ru.netology.filemanager.model.FileInfo</class>
+        <class>ru.netology.filemanager.model.User</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1" />
