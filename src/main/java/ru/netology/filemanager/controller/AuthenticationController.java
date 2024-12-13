@@ -3,11 +3,9 @@ package ru.netology.filemanager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.netology.filemanager.dto.AuthRequest;
+import ru.netology.filemanager.dto.AuthResponse;
 import ru.netology.filemanager.util.JWTUtils;
 
 @RestController
@@ -20,13 +18,12 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public String create(@RequestBody AuthRequest authRequest) {
+    public AuthResponse create(@RequestBody AuthRequest authRequest) {
         var authentication = new UsernamePasswordAuthenticationToken(
                 authRequest.getUsername(), authRequest.getPassword());
 
         authenticationManager.authenticate(authentication);
 
-        var token = jwtUtils.generateToken(authRequest.getUsername());
-        return token;
+        return new AuthResponse(jwtUtils.generateToken(authRequest.getUsername()));
     }
 }
