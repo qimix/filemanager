@@ -9,7 +9,6 @@ import ru.netology.filemanager.dto.AuthResponse;
 import ru.netology.filemanager.util.JWTUtils;
 
 @RestController
-@RequestMapping("/api")
 public class AuthenticationController {
     @Autowired
     private JWTUtils jwtUtils;
