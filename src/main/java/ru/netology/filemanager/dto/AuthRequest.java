@@ -6,11 +6,11 @@ import lombok.Setter;
 @Setter
 @Getter
 public class AuthRequest {
-    private String email;
+    private String login;
     private String password;
 
     public String getUsername() {
-        return email;
+        return login;
     }
 
     public String getPassword() {
