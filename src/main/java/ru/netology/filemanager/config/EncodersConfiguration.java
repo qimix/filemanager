@@ -19,7 +19,7 @@ import com.nimbusds.jose.proc.SecurityContext;
 import ru.netology.filemanager.util.RsaKeyProperties;
 
 @Configuration
-public class EncodersConfig {
+public class EncodersConfiguration {
 
     @Autowired
     private RsaKeyProperties rsaKeys;

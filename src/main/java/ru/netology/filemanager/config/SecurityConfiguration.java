@@ -19,7 +19,7 @@ import ru.netology.filemanager.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfiguration {
     @Autowired
     private JwtDecoder jwtDecoder;
 
