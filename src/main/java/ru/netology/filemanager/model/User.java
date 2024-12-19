@@ -1,11 +1,12 @@
 package ru.netology.filemanager.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
+import java.util.List;
+
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.validation.constraints.Email;
@@ -30,10 +31,9 @@ public class User implements UserDetails, BaseEntity {
     @NotBlank
     private String passwordDigest;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    @Column(name = "role", nullable = false)
+    private Role role;
 
     @Override
     public String getPassword() {
@@ -52,7 +52,7 @@ public class User implements UserDetails, BaseEntity {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<GrantedAuthority>();
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
